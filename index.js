@@ -4,21 +4,33 @@ let count = 1;
 let countClick = 0;
 
 function moreDots() {
-  const bg = document.querySelector("#background");
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     let dot = document.createElement("div");
     dot.setAttribute("class", "dot");
     dot.style.position = "absolute";
     dot.style.height = "25px";
     dot.style.width = "25px";
-    dot.style.top = Math.random() * bg.getBoundingClientRect().bottom + "px";
-    dot.style.left = Math.random() * bg.getBoundingClientRect().right + "px";
-    dot.style.zIndex = "1001";
+    let bottomPositon = Math.floor(
+      Math.min(
+        Math.random() *
+          document.querySelector("#background").getBoundingClientRect().bottom,
+        document.querySelector("#background").getBoundingClientRect().bottom -
+          175
+      )
+    );
+    let rightPosition = Math.min(
+      Math.random() *
+        document.querySelector("#background").getBoundingClientRect().right,
+      document.querySelector("#background").getBoundingClientRect().right - 50
+    );
+    dot.style.bottom = bottomPositon + "px";
+    dot.style.left = rightPosition + "px";
     document
       .querySelector("#background")
       .insertAdjacentElement("afterbegin", dot);
   }
   document.querySelectorAll(".dot").forEach(ele => {
+    console.log(ele);
     ele.addEventListener("click", e => {
       console.log("dot click :)");
       e.target.parentNode.removeChild(e.target);
@@ -26,7 +38,7 @@ function moreDots() {
   });
 }
 
-document.addEventListener("click", e => {
+function handleDotsOnInteraction(e) {
   if (e.target.className !== "dot") {
     moreDots();
     document.querySelector("#dotCount").innerText = count += 10;
@@ -39,10 +51,15 @@ document.addEventListener("click", e => {
     document.querySelector("#dotCount").innerText = count -= 1;
     console.log(countClick);
   }
-  if (e.target.className === "dot") {
+  if (
+    e.target.className === "dot" &&
+    document.querySelector(".dot").length < 1
+  ) {
     document.querySelector("#countClick").innerText = countClick += 1;
   }
-});
+}
+
+document.addEventListener("click", e => handleDotsOnInteraction(e));
 
 /*** TODO's
   1. Add Timer

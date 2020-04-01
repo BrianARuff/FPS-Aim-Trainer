@@ -1,24 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 #background {
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-  margin: 0px;
-  padding: 0px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   cursor: crosshair;
-  background: green !important;
+  background: lightblue;
+  position: relative;
+}
+
+.gameInfoClass {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
 
 .dot {
   height: 25px;
   width: 25px;
-  border: 1px solid #000;
   border-radius: 50%;
   background: red;
+  opacity: 1;
+  visibility: visible;
+  transition: all 300ms ease-in-out;
+}
+
+.dot:hover {
+  height: 30px;
+  width: 30px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: red;
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  height: 30px;
+  width: 30px;
+  border: 2px solid black;
+  transition: all 300ms ease-in-out;
 }
 
 #dotCount {
   z-index: 1002;
+}
+
+.no-dot {
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+  transition: all 300ms ease-in-out;
 }
