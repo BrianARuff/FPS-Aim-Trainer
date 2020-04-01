@@ -1,7 +1,14 @@
 document.querySelector("#background");
 
-let count = 1;
+let count = 0;
 let countClick = 0;
+
+function clearDots(ele) {
+  setInterval(() => {
+    ele.parentNode.removeChild(ele);
+    clearInterval();
+  }, 7000);
+}
 
 function moreDots() {
   for (let i = 0; i < 5; i++) {
@@ -35,13 +42,14 @@ function moreDots() {
       console.log("dot click :)");
       e.target.parentNode.removeChild(e.target);
     });
+    clearDots(ele);
   });
 }
 
 function handleDotsOnInteraction(e) {
   if (e.target.className !== "dot") {
     moreDots();
-    document.querySelector("#dotCount").innerText = count += 10;
+    document.querySelector("#dotCount").innerText = count += 5;
   }
   if (
     e.target.className !== "dot" &&
@@ -51,10 +59,7 @@ function handleDotsOnInteraction(e) {
     document.querySelector("#dotCount").innerText = count -= 1;
     console.log(countClick);
   }
-  if (
-    e.target.className === "dot" &&
-    document.querySelector(".dot").length < 1
-  ) {
+  if (e.target.className === "dot") {
     document.querySelector("#countClick").innerText = countClick += 1;
   }
 }
