@@ -1,22 +1,23 @@
-document.querySelector("#background");
+const bg = document.querySelector("#background");
 
 let count = 0;
 let countClick = 0;
+let dotTime;
 
 function clearDots(ele) {
-  setInterval(() => {
-    ele.parentNode.removeChild(ele);
-    clearInterval();
-  }, 7000);
+  const deleteDotsInterval = setInterval(() => {
+    if (ele.parentNode) {
+      ele.parentNode.removeChild(ele);
+    }
+    clearInterval(deleteDotsInterval);
+  }, dotTime);
 }
 
 function moreDots() {
   for (let i = 0; i < 5; i++) {
     let dot = document.createElement("div");
-    dot.setAttribute("class", "dot");
     dot.style.position = "absolute";
-    dot.style.height = "25px";
-    dot.style.width = "25px";
+    dot.classList.add("dot");
     let bottomPositon = Math.floor(
       Math.min(
         Math.random() *
@@ -37,9 +38,7 @@ function moreDots() {
       .insertAdjacentElement("afterbegin", dot);
   }
   document.querySelectorAll(".dot").forEach(ele => {
-    console.log(ele);
     ele.addEventListener("click", e => {
-      console.log("dot click :)");
       e.target.parentNode.removeChild(e.target);
     });
     clearDots(ele);
@@ -47,18 +46,6 @@ function moreDots() {
 }
 
 function handleDotsOnInteraction(e) {
-  if (e.target.className !== "dot") {
-    moreDots();
-    document.querySelector("#dotCount").innerText = count += 5;
-  }
-  if (
-    e.target.className !== "dot" &&
-    document.querySelector(".dot").length < 1
-  ) {
-    console.log("click a  blank spot for more dots to appear :) ");
-    document.querySelector("#dotCount").innerText = count -= 1;
-    console.log(countClick);
-  }
   if (e.target.className === "dot") {
     document.querySelector("#countClick").innerText = countClick += 1;
   }
@@ -66,7 +53,52 @@ function handleDotsOnInteraction(e) {
 
 document.addEventListener("click", e => handleDotsOnInteraction(e));
 
+function playGame() {
+  let mode = document.querySelectorAll("input[name=mode]:checked")[0];
+  document.querySelector("#countDown").innerText = mode.value;
+  console.log(mode.id);
+  if (mode.id === "easy") {
+    dotTime = 10000;
+  } else if (mode.id === "medium") {
+    dotTime = 7000;
+  } else if (mode.id === "hard") {
+    dotTime = 5000;
+  } else {
+    dotTime = 3000;
+  }
+
+  const countDownTimer = setInterval(() => {
+    document.querySelector("#countDown").innerText =
+      Number(document.querySelector("#countDown").innerText) - 1;
+
+    setTimeout(() => {
+      document.querySelector("#gameTimer").innerText =
+        Number(document.querySelector("#gameTimer").innerText) - 1;
+    }, dotTime);
+  }, 1000);
+
+  const dotSpawner = setInterval(() => {
+    document.querySelector("#countDown").innerText = mode.value;
+    moreDots();
+    document.querySelector("#dotCount").innerText =
+      Number(document.querySelector("#dotCount").innerText) + 5;
+  }, dotTime);
+
+  const clearDotSpawner = setInterval(() => {
+    clearInterval(dotSpawner);
+    clearInterval(countDownTimer);
+    clearInterval(clearDotSpawner);
+  }, 60000);
+}
+
+document.querySelector("#startGame").addEventListener("click", e => {
+  e.target.parentNode.removeChild(e.target);
+  document.querySelector("#countDown").style.display = "block";
+  playGame();
+});
+
 /*** TODO's
-  1. Add Timer
-  2. Add Modes
+  1. Add Timer -- COMPLETED
+  2. Add Modes -- COMPLETED
+  3. Add Sounds
 ***/

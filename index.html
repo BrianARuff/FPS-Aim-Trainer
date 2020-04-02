@@ -9,12 +9,32 @@
   <body>
     <div id="background">
       <div id="gameInfoID" class="gameInfoClass">
-        <h1>FPS AIM Trainer</h1>
+        <h1>FPS AIM Trainer: <span id="gameTimer">60</span></h1>
         <h3>Dot Count: <span id="dotCount">0</span></h3>
         <h3>Dot Click Count: <span id="countClick">0</span></h3>
-        <!-- <h3>Current Dots Timer: <span id="time">10</span></h3> -->
+        <h4>Refresh Page to Play Again :)</h4>
+        <div id="modesMenu">
+          <ul aria-label="Select Game Mode:">
+            <li>
+              <input
+                type="radio"
+                name="mode"
+                id="easy"
+                value="10"
+                checked
+              />Common
+            </li>
+            <li><input type="radio" name="mode" id="hard" value="5" />Epic</li>
+            <li>
+              <input type="radio" name="mode" id="insane" value="3" />Legendary
+            </li>
+          </ul>
+        </div>
       </div>
-      <p id="instructions">Click Blue to Add Targets</p>
+      <button id="startGame">Start Game</button>
+      <p id="countDown"></p>
+      <p id="score"></p>
+      <button id="restartGame">Restart Game</button>
     </div>
     <script src="index.js"></script>
   </body>

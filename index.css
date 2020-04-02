@@ -33,33 +33,103 @@ body {
   width: 25px;
   border-radius: 50%;
   background: red;
+  border: 1px solid black;
   opacity: 1;
-  visibility: visible;
+  display: block;
   transition: all 300ms ease-in-out;
+  animation: shake 0.3s infinite, fadeOut 10s ease-out;
 }
 
 .dot:hover {
-  height: 30px;
-  width: 30px;
   border: 1px solid transparent;
   border-radius: 50%;
   background: red;
   opacity: 1;
-  visibility: visible;
-  display: block;
   height: 30px;
   width: 30px;
   border: 2px solid black;
   transition: all 300ms ease-in-out;
 }
 
-#dotCount {
-  z-index: 1002;
+.instructionsPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.no-dot {
-  visibility: hidden;
-  opacity: 0;
+#countDown {
+  font-size: 24px;
+  font-weight: bolder;
   display: none;
-  transition: all 300ms ease-in-out;
+}
+
+button {
+  cursor: pointer;
+  background: lightgreen;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+#score {
+  font-size: 36px;
+  font-weight: bolder;
+}
+
+#restartGame {
+  display: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px);
+  }
+  10% {
+    transform: translate(-1px, -2px);
+  }
+  20% {
+    transform: translate(-3px, 0px);
+  }
+  30% {
+    transform: translate(3px, 2px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 2px);
+  }
+  60% {
+    transform: translate(-3px, 1px);
+  }
+  70% {
+    transform: translate(3px, 1px);
+  }
+  80% {
+    transform: translate(-1px, -1px);
+  }
+  90% {
+    transform: translate(1px, 2px);
+  }
+  100% {
+    transform: translate(1px, -2px);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    display: block;
+  }
+  100% {
+    display: none;
+  }
 }
