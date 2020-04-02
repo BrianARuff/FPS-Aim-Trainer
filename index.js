@@ -100,5 +100,6 @@ document.querySelector("#startGame").addEventListener("click", e => {
 /*** TODO's
   1. Add Timer -- COMPLETED
   2. Add Modes -- COMPLETED
+  3. Add scores in real time
   3. Add Sounds
 ***/
