@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let countClick = 0;
   let dotTime;
+  let dotSpawner;
+  let countDownTimer;
+  let clearDotSpawner;
   let username = document.querySelector("#username");
 
   function clearDots(ele) {
@@ -65,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(mode.id);
     dotTime = 3000;
 
-    const countDownTimer = setInterval(() => {
+    countDownTimer = setInterval(() => {
       document.querySelector("#countDown").innerText =
         Number(document.querySelector("#countDown").innerText) - 1;
 
@@ -75,18 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }, dotTime);
     }, 1000);
 
-    const dotSpawner = setInterval(() => {
+    dotSpawner = setInterval(() => {
       const dotCount = Number(document.querySelector("#dotCount").innerText)
       document.querySelector("#countDown").innerText = mode.value;
       moreDots();
       document.querySelector("#dotCount").innerText = dotCount + 5;
-      if (dotCount === 95) {
-        const clearDotSpawner = setInterval(() => {
+      if (dotCount === 100) {
           clearInterval(dotSpawner);
           clearInterval(countDownTimer);
           clearInterval(clearDotSpawner);
-        }, 0);
-        fetch("https://boiling-citadel-90849.herokuapp.com/", {
+          fetch("https://boiling-citadel-90849.herokuapp.com/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
