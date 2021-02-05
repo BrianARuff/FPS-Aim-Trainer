@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <div id="highScore"> <h2>High Score:</h2></div>
     <div id="background">
       <div id="gameInfoID" class="gameInfoClass">
         <h1>FPS AIM Trainer: <span id="gameTimer">60</span></h1>
@@ -14,23 +15,14 @@
         <h3>Dot Click Count: <span id="countClick">0</span></h3>
         <h4>Refresh Page to Play Again :)</h4>
         <div id="modesMenu">
-          <ul aria-label="Select Game Mode:">
+          <ul hidden aria-label="Select Game Mode:">
             <li>
-              <input
-                type="radio"
-                name="mode"
-                id="easy"
-                value="10"
-                checked
-              />Common
-            </li>
-            <li><input type="radio" name="mode" id="hard" value="5" />Epic</li>
-            <li>
-              <input type="radio" name="mode" id="insane" value="3" />Legendary
+              <input checked type="radio" name="mode" id="insane" value="3" />Legendary
             </li>
           </ul>
         </div>
       </div>
+      <input type="text" name="username" id="username" placeholder="Enter User Name" value="brian">
       <button id="startGame">Start Game</button>
       <p id="countDown"></p>
       <p id="score"></p>

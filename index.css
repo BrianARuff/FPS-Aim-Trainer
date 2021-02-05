@@ -133,3 +133,21 @@ li {
     display: none;
   }
 }
+
+#highScore {
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+#username {
+  height: 1.75rem;
+  width: 125px;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-align: center;
+}
