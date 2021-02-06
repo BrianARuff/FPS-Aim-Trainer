@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
             })
           }).then(r => {
             r.json()
+            clearInterval(countDownTimer);
+            clearInterval(clearDotSpawner);
+            clearInterval(dotSpawner);
             window.location.reload();
             window.scrollTo(0, 0)
           })
           .then(data => console.log("Success " + data))
           .catch(error => console.log("Error " + error));
-          clearInterval(countDownTimer);
-          clearInterval(clearDotSpawner);
-          clearInterval(dotSpawner);
       }
     }, dotTime);
   }
