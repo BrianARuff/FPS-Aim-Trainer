@@ -95,8 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
             })
           }).then(r => {
             r.json()
-            clearInterval(countDownTimer);
             clearInterval(clearDotSpawner);
+            clearInterval(countDownTimer);
             clearInterval(dotSpawner);
             window.location.reload();
             window.scrollTo(0, 0)
