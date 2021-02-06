@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch('https://boiling-citadel-90849.herokuapp.com/score') 
-      .then(response => response.json()) 
-      .then(data => {
-        document.querySelector("#highScore > h2").innerHTML += " " + data[0].score + "<br> Set by: " + data[0].username;
-  });  
+  fetch('https://boiling-citadel-90849.herokuapp.com/score')
+    .then(response => response.json())
+    .then(data => {
+      document.querySelector("#highScore > h2").innerHTML += " " + (data[0].score || 0) + "<br> Set by: " + (data[0].username || "brian");
+    });
 
 
   let countClick = 0;
@@ -84,18 +84,23 @@ document.addEventListener("DOMContentLoaded", () => {
       moreDots();
       document.querySelector("#dotCount").innerText = dotCount + 5;
       if (dotCount === 100) {
-          clearInterval(dotSpawner);
-          clearInterval(countDownTimer);
-          clearInterval(clearDotSpawner);
-          fetch("https://boiling-citadel-90849.herokuapp.com/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({username: username.value || "brian", score: Number(document.querySelector("#countClick").innerText)})
-        }).then(r => r.json())
+        fetch("https://boiling-citadel-90849.herokuapp.com/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              username: username.value || "brian",
+              score: Number(document.querySelector("#countClick").innerText) || 0
+            })
+          }).then(r => r.json())
           .then(data => console.log("Success " + data))
           .catch(error => console.log("Error " + error));
+          clearInterval(countDownTimer);
+          clearInterval(clearDotSpawner);
+          clearInterval(dotSpawner);
+          window.location.reload();
+          window.scrollTo(0, 0)
       }
     }, dotTime);
   }
