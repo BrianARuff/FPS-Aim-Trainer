@@ -93,14 +93,16 @@ document.addEventListener("DOMContentLoaded", () => {
               username: username.value || "brian",
               score: Number(document.querySelector("#countClick").innerText) || 0
             })
-          }).then(r => r.json())
+          }).then(r => {
+            r.json()
+            window.location.reload();
+            window.scrollTo(0, 0)
+          })
           .then(data => console.log("Success " + data))
           .catch(error => console.log("Error " + error));
           clearInterval(countDownTimer);
           clearInterval(clearDotSpawner);
           clearInterval(dotSpawner);
-          window.location.reload();
-          window.scrollTo(0, 0)
       }
     }, dotTime);
   }
