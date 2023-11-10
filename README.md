@@ -62,7 +62,7 @@
 
 1. In the ui folder, runt he index.html file in your browser.
 
-# Running on HTTPS (Ubuntu)
+# Running on HTTPS (Ubuntu) - Server will try to do this for you automatically now
 
 1. create signed certificate with OpenSSL
    `openssl genrsa -out localhost.key 2048
