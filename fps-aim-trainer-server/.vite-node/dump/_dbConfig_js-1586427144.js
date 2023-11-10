@@ -1,0 +1,17 @@
+// /dbConfig.js
+const __vite_ssr_import_0__ = await __vite_ssr_import__("pg");
+
+
+const pool = new __vite_ssr_import_0__.default.Pool({
+  connectionString:
+    "postgresql://brianruff:1366@localhost:5432/fps-aim-trainer",
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+const db = pool.connect();
+Object.defineProperty(__vite_ssr_exports__, "db", { enumerable: true, configurable: true, get(){ return db }});
+
+//# sourceMappingSource=vite-node
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRiQ29uZmlnLmpzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBwZyBmcm9tIFwicGdcIjtcblxuY29uc3QgcG9vbCA9IG5ldyBwZy5Qb29sKHtcbiAgY29ubmVjdGlvblN0cmluZzpcbiAgICBcInBvc3RncmVzcWw6Ly9icmlhbnJ1ZmY6MTM2NkBsb2NhbGhvc3Q6NTQzMi9mcHMtYWltLXRyYWluZXJcIixcbiAgc3NsOiB7XG4gICAgcmVqZWN0VW5hdXRob3JpemVkOiBmYWxzZSxcbiAgfSxcbn0pO1xuXG5leHBvcnQgY29uc3QgZGIgPSBwb29sLmNvbm5lY3QoKTtcbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQW9CO0FBQ3BCO0FBQ0EsS0FBSyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsR0FBRyxDQUFDLDZCQUFFLENBQUMsSUFBSSxDQUFDLENBQUM7QUFDMUIsQ0FBQyxDQUFDLGdCQUFnQixDQUFDO0FBQ25CLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxDQUFDO0FBQ2pFLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBQ1IsQ0FBQyxDQUFDLENBQUMsQ0FBQyxrQkFBa0IsQ0FBQyxDQUFDLEtBQUssQ0FBQztBQUM5QixDQUFDLENBQUMsQ0FBQyxDQUFDO0FBQ0osQ0FBQyxDQUFDLENBQUM7QUFDSDtBQUNPLEtBQUssQ0FBQyxFQUFFLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQzsrR0FBQzsifQ==

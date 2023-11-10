@@ -1,0 +1,8 @@
+{
+  "time": "11/10/2023, 4:23:49 PM",
+  "externalize": {
+    "/root/code/fps-aim-trainer-backend/fps-aim-trainer-server/node_modules/express/index.js": "/root/code/fps-aim-trainer-backend/fps-aim-trainer-server/node_modules/express/index.js",
+    "/root/code/fps-aim-trainer-backend/fps-aim-trainer-server/node_modules/cors/lib/index.js": "/root/code/fps-aim-trainer-backend/fps-aim-trainer-server/node_modules/cors/lib/index.js",
+    "/root/code/fps-aim-trainer-backend/fps-aim-trainer-server/node_modules/pg/lib/index.js": "/root/code/fps-aim-trainer-backend/fps-aim-trainer-server/node_modules/pg/lib/index.js"
+  }
+}
